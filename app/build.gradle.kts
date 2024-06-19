@@ -74,6 +74,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.lottie)
+  //  implementation(libs.permission)
     implementation("com.github.getActivity:XXPermissions:18.63")
+
 
 }

@@ -118,6 +118,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
                         // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                        gotoAppSettingPermissions(*permissions)
                     } else {
                         Toast.makeText(mContext, "权限请求被拒绝", Toast.LENGTH_SHORT).show()
                     }
@@ -129,6 +130,16 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         XXPermissions.startPermissionActivity(this,permissions)
 
     }
+    //请求权限
+//    protected fun requestPermission(permission: Array<String>, granted: Action<List<String>>) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//           AndPermission.with(this)
+//                .runtime()
+//                .permission(permission)
+//                .onGranted(granted)
+//                .start()
+//        }
+//    }
 
     /**
      *

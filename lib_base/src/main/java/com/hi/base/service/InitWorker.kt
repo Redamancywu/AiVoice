@@ -1,5 +1,6 @@
 package com.hi.base.service
 
+import AppHelper
 import android.app.IntentService
 import android.content.Context
 import android.os.Build
@@ -24,15 +25,9 @@ class InitWorker(mContext: Context,workParams: WorkerParameters) : Worker(mConte
     override fun doWork(): Result {
         //TODO("Not yet implemented")
         // 初始化操作
-      //  SpUtils.intSpUtils(applicationContext)
-       // NotificationHelper.initHelper(applicationContext)
-        //VoiceManager.initVoiceManager(applicationContext)
         HiLog.e("初始化服务")
         return Result.success()
     }
-
-
-
     override fun onStopped() {
         super.onStopped()
     }

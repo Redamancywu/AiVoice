@@ -2,25 +2,22 @@ package com.hi.base.helper
 
 import android.content.Context
 import android.media.SoundPool
+import com.hi.base.utils.AppGlobals
 
 /**
  *  播放铃声
  */
 object SoundPoolHelper {
-    private lateinit var mContext: Context
-    private lateinit var mSoundPool: SoundPool
 
-    fun init(mContext: Context) {
-        this.mContext = mContext
-
+    private  var mSoundPool: SoundPool
+     init {
         mSoundPool = SoundPool.Builder().setMaxStreams(1).build()
     }
-
     /**
      * 播放
      */
     fun play(resId: Int) {
-        val poolId = mSoundPool.load(mContext, resId, 1)
+        val poolId = mSoundPool.load(AppGlobals.getApplication(), resId, 1)
         mSoundPool.setOnLoadCompleteListener { _, _, status ->
             if (status == 0) {
                 /**

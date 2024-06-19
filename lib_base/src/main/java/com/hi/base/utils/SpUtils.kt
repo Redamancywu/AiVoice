@@ -43,6 +43,11 @@ object SpUtils {
     fun getBoolean(key: String, defValue: Boolean): Boolean {
         return sp.getBoolean(key, defValue)
     }
+    fun getString(key: String): String? {
+        return sp.getString(key, "")
+    }
+
+
 
 
 }

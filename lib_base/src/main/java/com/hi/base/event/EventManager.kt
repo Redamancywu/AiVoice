@@ -3,10 +3,6 @@ package com.hi.base.event
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-
-
-
-
 /**
  * EventBus事件管理类
  */

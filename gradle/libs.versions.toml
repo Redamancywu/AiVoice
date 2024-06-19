@@ -21,6 +21,11 @@ retrofit = "2.9.0"
 retrofitGsonConverter = "2.9.0"
 lottie = "6.4.1"
 
+refreshLayoutKernel = "2.1.0"
+refreshheader= "2.1.0"
+refreshfooter="2.1.0"
+mPAndroidChart = "v3.1.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -40,6 +45,14 @@ okhttpInterceptor = { group = "com.squareup.okhttp3", name = "logging-intercepto
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofitGsonConverter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitGsonConverter" }
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+refreshLayoutKernel = { group = "io.github.scwang90", name = "refresh-layout-kernel", version.ref = "refreshLayoutKernel" }
+refreshheader = { group = "io.github.scwang90", name = "refresh-header-classics", version.ref = "refreshheader" }
+refreshfooter = { group = "io.github.scwang90", name = "refresh-footer-classics", version.ref = "refreshfooter" }
+mPAndroidChart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "mPAndroidChart" }
+
+
+
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

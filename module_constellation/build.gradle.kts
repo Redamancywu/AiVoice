@@ -67,9 +67,12 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(project(":lib_base"))
+    implementation(project(":lib_network"))
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.okhttp)
+    implementation(libs.okhttpInterceptor)
+    implementation(libs.retrofit)
+    implementation(libs.retrofitGsonConverter)
 }

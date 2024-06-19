@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ConstellationActivity">
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--标题栏-->
+    <LinearLayout
+        android:background="@drawable/brackgroud"
+        android:id="@+id/mLlContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:background="@drawable/bth_2"
+            android:id="@+id/mTvToday"
+            style="@style/ConstellationTextStyle"
+            android:text="@string/app_date_today" />
+
+        <Button
+            android:background="@drawable/bth_2"
+            android:id="@+id/mTvTomorrow"
+            style="@style/ConstellationTextStyle"
+            android:text="@string/app_date_tomorrow" />
+
+        <Button
+            android:background="@drawable/bth_2"
+            android:id="@+id/mTvWeek"
+            style="@style/ConstellationTextStyle"
+            android:text="@string/app_date_week" />
+
+        <Button
+            android:background="@drawable/bth_2"
+            android:id="@+id/mTvMonth"
+            style="@style/ConstellationTextStyle"
+            android:text="@string/app_date_month" />
+
+        <Button
+            android:background="@drawable/bth_2"
+            android:id="@+id/mTvYear"
+            style="@style/ConstellationTextStyle"
+            android:text="@string/app_date_year" />
+
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:background="@drawable/gradient_background"
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

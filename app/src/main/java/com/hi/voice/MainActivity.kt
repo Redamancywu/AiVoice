@@ -1,4 +1,5 @@
 package com.hi.voice
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.util.Log
@@ -16,8 +17,11 @@ import com.hi.voice.data.PagerData
 import com.hi.voice.databinding.ActivityMainBinding
 import com.hi.voice.inransformer.ScaleInTransformer
 import com.hi.voice.service.VoiceService
+import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission
+
 import com.hjq.permissions.XXPermissions
+import com.imooc.lib_base.helper.`fun`.ContactHelper
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +29,17 @@ import retrofit2.Response
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+    //不建议一股脑的申请权限 而是应该根据使用到的场景是让用户同意权限
+    private val permission = arrayOf(
+        Manifest.permission.RECORD_AUDIO,
+        Manifest.permission.CALL_PHONE,
+        Manifest.permission.READ_CONTACTS,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+      //  Manifest.permission.VIBRATE,
+        Manifest.permission.WRITE_CONTACTS,
+        Manifest.permission.CAMERA
+    )
     private val mList=ArrayList<PagerData>()
     private  val mListView=ArrayList<View>()
     override fun getTitleText(): String {
@@ -36,21 +51,49 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initView() {
-        requestPermission()
-        initData()
-        initPagerView()
-    }
+        // 动态权限
+        if (checkPermission(permission)) {
+            // 如果已有权限，则直接链接服务和初始化联系人帮助类
+            linkService()
+        } else {
+            // 请求权限
+            XXPermissions.with(this)
+                .permission(permission)
+                .request(object :OnPermissionCallback{
+                    override fun onGranted(permissions: List<String>, all: Boolean) {
+                        if (all) {
+                            // 所有请求的权限都被用户授予了
+                            linkService()
+                        } else {
+                            // 用户未授予所有权限，可以在这里添加逻辑来处理这种情况
+                            Toast.makeText(this@MainActivity, "请授予所有权限以正常使用应用功能", Toast.LENGTH_SHORT).show()
+                            XXPermissions.startPermissionActivity(this@MainActivity, permissions)
+                        }
+                    }
 
-    private fun requestPermission() {
-        linkService()
-//        if (!checkPermission(Permission.RECORD_AUDIO)){
-//            RequestPermissions(Permission.RECORD_AUDIO)
-//        }else{
-//            linkService()
-//        }
-//        if (!checkWindowPermission()){
-//            requestWindowPermission(packageName)
-//        }
+                    override fun onDenied(permissions: List<String>, neverAskAgain: Boolean) {
+                        if (neverAskAgain) {
+                            // 用户选择了“不再询问”，可能需要引导用户手动在设置中开启权限
+                            Toast.makeText(this@MainActivity, "您拒绝了部分权限，且选择了不再询问。请在设置中手动开启权限。", Toast.LENGTH_SHORT).show()
+                            XXPermissions.startPermissionActivity(this@MainActivity, permissions)
+                        } else {
+                            // 用户拒绝了权限，但允许再次询问
+                            Toast.makeText(this@MainActivity, "请授予所需权限以正常使用应用功能", Toast.LENGTH_SHORT).show()
+                            XXPermissions.startPermissionActivity(this@MainActivity, permissions)
+                        }
+                    }
+                })
+
+        }
+        if (!checkWindowPermission()){
+            requestWindowPermission(packageName)
+        }
+
+        initData()
+
+        initPagerView()
+
+        // 窗口权限和其他初始化逻辑...
 
     }
 
@@ -128,6 +171,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun linkService(){
+        ContactHelper.initHelper()
         startService(Intent(this, VoiceService::class.java))
     }
 
