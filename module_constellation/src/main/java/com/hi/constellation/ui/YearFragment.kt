@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.hi.base.base.BaseFragmentViewBinding
 import com.hi.base.utils.HiLog
-import com.hi.constellation.R
 import com.hi.constellation.databinding.FragmentYearBinding
 import com.hi.network.HttpManager
-import com.hi.network.bead.YearData
+import com.hi.network.bean.YearData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

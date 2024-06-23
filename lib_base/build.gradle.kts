@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.refreshheader)
     implementation(libs.refreshLayoutKernel)
     implementation(libs.mpAndroidChart)
+    implementation(libs.gson)
     implementation(project(":lib_network"))
     implementation(project(":lib_voice"))
     implementation("com.github.getActivity:XXPermissions:18.63")

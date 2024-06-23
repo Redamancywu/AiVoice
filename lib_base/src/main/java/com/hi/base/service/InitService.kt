@@ -5,6 +5,7 @@ import android.app.Notification
 import android.content.Intent
 import android.os.Build
 import com.hi.base.helper.NotificationHelper
+import com.hi.base.utils.AssetsUtils
 import com.hi.base.utils.HiLog
 import com.hi.base.utils.SpUtils
 import com.hi.voice.words.WordsTools
@@ -37,7 +38,7 @@ class InitService : IntentService(InitService::class.simpleName) {
         AppHelper.initHelper()
 //        CommonSettingHelper.initHelper(this)
 //        ConsTellHelper.initHelper(this)
-//        AssetsUtils.initUtils(this)
+        AssetsUtils.initUtils(this)
     }
 
     override fun onDestroy() {

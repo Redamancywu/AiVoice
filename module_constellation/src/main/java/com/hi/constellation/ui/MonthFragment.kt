@@ -8,7 +8,7 @@ import com.hi.base.utils.HiLog
 import com.hi.constellation.R
 import com.hi.constellation.databinding.FragmentMonthBinding
 import com.hi.network.HttpManager
-import com.hi.network.bead.MonthData
+import com.hi.network.bean.MonthData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

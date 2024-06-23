@@ -130,6 +130,8 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         XXPermissions.startPermissionActivity(this,permissions)
 
     }
+
+
     //请求权限
 //    protected fun requestPermission(permission: Array<String>, granted: Action<List<String>>) {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

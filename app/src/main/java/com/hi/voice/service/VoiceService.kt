@@ -20,7 +20,7 @@ import com.hi.base.helper.WindowHelper
 import com.hi.base.utils.HiLog
 import com.hi.base.utils.SpUtils
 import com.hi.network.HttpManager
-import com.hi.network.bead.JokeOneData
+import com.hi.network.bean.JokeOneData
 import com.hi.voice.R
 import com.hi.voice.adapter.ChatListAdapter
 import com.hi.voice.data.ChatList

@@ -1,19 +1,19 @@
 package com.hi.network
 
 import HttpInterceptor
-import com.hi.network.bead.JokeListData
-import com.hi.network.bead.JokeOneData
-import com.hi.network.bead.MonthData
-import com.hi.network.bead.TodayData
-import com.hi.network.bead.WeekData
-import com.hi.network.bead.YearData
+import com.hi.network.bean.Future
+import com.hi.network.bean.FutureWeather
+import com.hi.network.bean.JokeListData
+import com.hi.network.bean.JokeOneData
+import com.hi.network.bean.MonthData
+import com.hi.network.bean.TodayData
+import com.hi.network.bean.WeatherData
+import com.hi.network.bean.WeekData
+import com.hi.network.bean.YearData
 import com.hi.network.http.HttpKey
 import com.hi.network.http.HttpUrl
 import com.hi.network.itf.HttpImplService
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -31,22 +31,38 @@ object HttpManager {
         return OkHttpClient.Builder().addInterceptor(HttpInterceptor()).build()
     }
 
-    //天气对象
-  private val retrofitWeather by lazy {
+    //查询城市天气
+    private val queryLocalWeather by lazy {
         Retrofit.Builder()
             .client(getOkHttpClient())
-            .baseUrl(HttpUrl.WEATHER_BASE_URI)
+            .baseUrl(HttpUrl.WEATHER_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+    //天气
+//    private val retrofitWeather by lazy {
+//        Retrofit.Builder()
+//            .client(getOkHttpClient())
+//            .baseUrl(HttpUrl.BASE_WEATHER_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//    }
     //天气接口对象
     private val apiWeather by lazy {
-        retrofitWeather.create(HttpImplService::class.java)
+        queryLocalWeather.create(HttpImplService::class.java)
     }
+
     //查询天气
-    fun queryWeather(location: String): Call<ResponseBody> {
-        return apiWeather.getWeather(HttpUrl.WEATHER_ACTION, HttpKey.WEATHER_KEY, location)
+    fun queryWeather(city: String, callback: Callback<WeatherData>) {
+        apiWeather.getWeather(city, HttpKey.WEATHER_KEY).enqueue(callback)
     }
+    //未来七天
+    fun queryWeekWeather(city: String, callback: Callback<Future>) {
+        apiWeather.getWeekWeather(city, HttpKey.WEATHER_KEY).enqueue(callback)
+    }
+
+
+
 
     //============================笑话============================
 

@@ -1,4 +1,4 @@
-package com.hi.network.bead
+package com.hi.network.bean
 
 
 /**

@@ -56,6 +56,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    viewBinding{
+        enable=true
+    }
 }
 
 dependencies {
@@ -63,11 +66,22 @@ dependencies {
     kapt(libs.arouterCompiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+   // implementation(libs.material)
+    implementation("com.google.android.material:material:1.0.0")
     implementation(project(":lib_base"))
+    implementation(project(":lib_network"))
+    implementation(libs.swiperefreshlayout)
+    //implementation(libs.livedata)
+    implementation(libs.mpAndroidChart)
+    implementation(libs.lifecycle)
+    implementation(libs.lifecycleextensions)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.gson)
+    implementation ("com.squareup.retrofit2:converter-gson:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-livedata:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.8.2")
 }

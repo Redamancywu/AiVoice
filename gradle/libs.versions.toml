@@ -20,11 +20,18 @@ okhttpInterceptor = "4.10.0"
 retrofit = "2.9.0"
 retrofitGsonConverter = "2.9.0"
 lottie = "6.4.1"
-
+lifecycle = "2.8.2"
+livedata = "2.8.2"
+lifecycleextensions = "2.2.0"
 refreshLayoutKernel = "2.1.0"
 refreshheader= "2.1.0"
 refreshfooter="2.1.0"
 mPAndroidChart = "v3.1.0"
+swiperefreshlayout= "1.1.0"
+viewmodel = "2.8.2"
+gson = "2.10.1"
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,6 +56,12 @@ refreshLayoutKernel = { group = "io.github.scwang90", name = "refresh-layout-ker
 refreshheader = { group = "io.github.scwang90", name = "refresh-header-classics", version.ref = "refreshheader" }
 refreshfooter = { group = "io.github.scwang90", name = "refresh-footer-classics", version.ref = "refreshfooter" }
 mPAndroidChart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "mPAndroidChart" }
+swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "livedata" }
+lifecycleextensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "lifecycleextensions" }
+viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodel" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 
 

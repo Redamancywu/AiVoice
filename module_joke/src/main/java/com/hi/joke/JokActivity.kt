@@ -11,8 +11,8 @@ import com.hi.base.helper.ARouterHelper
 import com.hi.base.utils.HiLog
 import com.hi.joke.databinding.ActivityJokBinding
 import com.hi.network.HttpManager
-import com.hi.network.bead.Data
-import com.hi.network.bead.JokeListData
+import com.hi.network.bean.Data
+import com.hi.network.bean.JokeListData
 import com.hi.voice.manager.VoiceManager
 import com.hi.voice.tts.VoiceTTs
 import com.scwang.smart.refresh.footer.ClassicsFooter
